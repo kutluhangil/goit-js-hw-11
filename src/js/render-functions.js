@@ -1,6 +1,4 @@
 import iziToast from "izitoast";
-// iziToast CSS is imported in main.js as per typical Vite setup or we can do it here if we want side-effects.
-// The prompt says "add another import to library CSS code".
 
 export function renderGallery(images) {
   const gallery = document.querySelector(".gallery");
