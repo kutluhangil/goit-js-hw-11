@@ -1,0 +1,68 @@
+import iziToast from "izitoast";
+// iziToast CSS is imported in main.js as per typical Vite setup or we can do it here if we want side-effects.
+// The prompt says "add another import to library CSS code".
+
+export function renderGallery(images) {
+  const gallery = document.querySelector(".gallery");
+  const markup = images
+    .map((image) => {
+      return `
+      <li class="gallery-item">
+        <a class="gallery-link" href="${image.largeImageURL}">
+          <img
+            class="gallery-image"
+            src="${image.webformatURL}"
+            alt="${image.tags}"
+          />
+        </a>
+        <div class="info">
+          <div class="info-item">
+            <b>Likes</b>
+            <p>${image.likes}</p>
+          </div>
+          <div class="info-item">
+            <b>Views</b>
+            <p>${image.views}</p>
+          </div>
+          <div class="info-item">
+            <b>Comments</b>
+            <p>${image.comments}</p>
+          </div>
+          <div class="info-item">
+            <b>Downloads</b>
+            <p>${image.downloads}</p>
+          </div>
+        </div>
+      </li>
+    `;
+    })
+    .join("");
+
+  gallery.innerHTML = markup;
+}
+
+export function clearGallery() {
+  document.querySelector(".gallery").innerHTML = "";
+}
+
+export function showNoResultsMessage() {
+  iziToast.error({
+    title: "Error",
+    message:
+      "Sorry, there are no images matching your search query. Please try again!",
+    position: "topRight",
+    backgroundColor: "#EF4040",
+    titleColor: "#fff",
+    messageColor: "#fff",
+    iconColor: "#fff",
+    close: true,
+  });
+}
+
+export function showErrorMessage(error) {
+  iziToast.error({
+    title: "Error",
+    message: `Something went wrong: ${error}`,
+    position: "topRight",
+  });
+}
