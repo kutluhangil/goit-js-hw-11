@@ -42,7 +42,6 @@ form.addEventListener("submit", (event) => {
 
   fetchImages(query)
     .then((data) => {
-      console.log('Data received:', data); // Debug log
       if (data.hits.length === 0) {
         showNoResultsMessage();
       } else {

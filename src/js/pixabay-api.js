@@ -16,7 +16,6 @@ export function fetchImages(query) {
     safesearch: "true",
   });
 
-  console.log('Fetching images with key:', API_KEY);
   return fetch(`${BASE_URL}?${searchParams}`).then((response) => {
     if (!response.ok) {
       throw new Error(response.status);
